@@ -1,1 +1,7 @@
-<p>img works!</p>
+<img (load)="imgLoaded()" (error)="imgError()" [src]="img" [alt]=""/>
+<!-- Esto que esta comentado ya no es necesario por que  al manejar el error en la logica ya no tenemos que usar ng-template-->
+<!--<img (load)="imgLoaded()" (error)="imgError()" [src]="img" *ngIf="img; else elseImg">
+<ng-template #elseImg>
+  <img [src]="imageDefault" alt="">
+</ng-template>
+-->

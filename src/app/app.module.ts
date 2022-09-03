@@ -11,6 +11,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { VocalesPorNumerosPipe } from './pipes/vocales-por-numeros.pipe';
+import { HighLightDirective } from './directives/high-light.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { VocalesPorNumerosPipe } from './pipes/vocales-por-numeros.pipe';
     ReversePipe,
     TimeAgoPipe,
     VocalesPorNumerosPipe,
+    HighLightDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

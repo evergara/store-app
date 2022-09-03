@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,9 @@ import { ImgComponent } from './components/img/img.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { VocalesPorNumerosPipe } from './pipes/vocales-por-numeros.pipe';
 
 @NgModule({
   declarations: [
@@ -14,13 +18,13 @@ import { ProductsComponent } from './components/products/products.component';
     ImgComponent,
     NavComponent,
     ProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    ReversePipe,
+    TimeAgoPipe,
+    VocalesPorNumerosPipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

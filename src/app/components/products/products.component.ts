@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@app/models/product.model';
+import { ProductService } from '@app/services/product.service';
 import { ShoppingCartService } from '@app/services/shoppingcart.service';
 
 @Component({
@@ -14,60 +15,27 @@ export class ProductsComponent implements OnInit {
   today: Date;
   date: Date;
 
-  constructor(private shoppingCartService: ShoppingCartService) {
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private productsServices: ProductService
+  ) {
     //this.products = [];
     this.total = 0;
     this.today = new Date(2019, 1, 1);
     this.date = new Date(2021, 1, 21);
     this.totalItemShoppingCart = 0;
-    this.products = [
-      {
-        id: '1',
-        title: 'EL mejor juguete',
-        price: 565,
-        image:
-          'https://static.platzi.com/media/user_upload/toy-a0d1c980-a8ce-4fa4-83d6-3b016999a162.jpg',
-      },
-      {
-        id: '2',
-        title: 'Bicicleta casi nueva',
-        price: 356,
-        image:
-          'https://static.platzi.com/media/user_upload/bike-143dcfe9-3190-49fd-88f7-d3bf74182072.jpg',
-      },
-      {
-        id: '3',
-        title: 'Colleción de albumnes',
-        price: 34,
-        image:
-          'https://static.platzi.com/media/user_upload/books-80160e05-d177-420b-89c5-01a97b2bdb76.jpg',
-      },
-      {
-        id: '4',
-        title: 'Mis libros',
-        price: 23,
-        image:
-          'https://static.platzi.com/media/user_upload/album-6f4213d5-1d2d-4e0f-96fe-edb36c3255b4.jpg',
-      },
-      {
-        id: '5',
-        title: 'Casita michi',
-        price: 125,
-        image:
-          'https://static.platzi.com/media/user_upload/house-034b0c04-eeff-42fa-b506-79f18f73ff90.jpg',
-      },
-      {
-        id: '6',
-        title: 'Lentes vintage',
-        price: 82,
-        image:
-          'https://static.platzi.com/media/user_upload/glasses-05350737-5831-4c98-be55-824399206dba.jpg',
-      },
-    ];
+    this.products = [];
   }
 
   ngOnInit(): void {
+    this.getAllProduct();
     this.shoppingCart();
+  }
+
+  getAllProduct(): void {
+    this.productsServices.getAllProduct().subscribe((products) => {
+      this.products = products;
+    });
   }
 
   shoppingCart(): void {
